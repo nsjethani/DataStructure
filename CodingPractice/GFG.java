@@ -27,27 +27,28 @@ class GFG {
 	
 	public void findSub(String arr[],int sum)
     {
-        int begin=0,end=0,s,j;
+        
         for(int i=0;i<arr.length;i++)
         {
+            int begin=0,end=0,s=0,j;
             j=i+1; s=Integer.parseInt(arr[i]);
+            if(i==arr.length-1 && Integer.parseInt(arr[i])!=sum)
+                System.out.println("-1");
             if(j!=arr.length)
             {
                 while(s<sum)
                 {
                     s+=Integer.parseInt(arr[j]);
                     j++;
+                    if(j==arr.length)
+                        break;
                 }
             }
 
             if(s==sum)
             {
                 begin=i+1; end=j;
-                if(begin==0)
-                    System.out.println("-1");
-                else
-                    System.out.println(begin+" "+end);
-                break;
+                System.out.println(begin+" "+end); break;
             }
         }
     }
